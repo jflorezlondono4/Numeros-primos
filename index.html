@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+ 
+<script>
+//Hace el calculo correspondiente para verificar si el numero es primo o no ( funcion booleana)
+    function esPrimo(numero)
+    {
+    //Validacion para verificar si es valido o no (Un numero es primo si es divisible o multiplo de si mismo o la unidad)
+        if (numero<=1 || numero%1)
+        {
+            return false;
+        }
+        //Operacion que realiza el calculo (Math.sqrt retorna la raíz cuadrada de un número, que es)
+        let m=Math.sqrt(numero);
+        //Calculo de numero primo
+        for (let i=2; i<=m; i++)
+        {
+
+            if (numero%i==0) {    //( Si el residuo del numero ingresado es igual a cero, el numero no es primo
+                return false;
+                //Retorno si no es primo
+            }
+        }
+        //Retorno si es primo
+        return true;
+    }
+ 
+  //Crea el html y hace llamado a la funcion esPrimo()
+function primo()
+{
+let valor=parseInt(document.getElementById("valor").value); // Obtiene el id del campo y lo convierte a entero
+
+//Valida si el return fue true
+if (esPrimo(valor)) {
+document.getElementById("resultado").innerHTML="El numero "+valor+" SI es Primo"; //Muestra mensaje en pantalla
+}
+else
+{
+document.getElementById("resultado").innerHTML="El numero "+valor+" NO es Primo";
+        }
+}
+</script>
+</head>
+<body>
+ 
+<h4>Determinar si un número es primo</h4>
+ 
+<input type="text" id="valor" value="" placeholder="introduce un valor numérico">
+<input type="button" onclick="primo()" value="Primo">
+ 
+<div id="resultado"></div>
+ 
+</body>
+</html>
